@@ -1,0 +1,40 @@
+[package]
+name = "origin-atlas"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.93"
+description = "ORIGIN: a live routing atlas built with Proa and RIPE data"
+
+[dependencies]
+anyhow = { version = "1" }
+axum = { version = "0.7.9" }
+const_format = { version = "0.2" }
+heapless = { version = "0.8" }
+proa_actions = { version = "0.3.0" }
+proa_core = { version = "0.3.0" }
+proa_fonts = { version = "0.1.0" }
+proa_fonts_macros = { version = "0.1.0" }
+proa_framework_axum = { version = "0.3.0" }
+proa_ir = { version = "0.1.2" }
+proa_macros = { version = "0.3.0" }
+proa_stream = { version = "0.3.0" }
+reqwest = { version = "0.12", features = ["json"] }
+rsjs = { version = "0.2.0" }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1" }
+thiserror = { version = "2" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+tower-http = { version = "0.6", features = ["fs", "trace"] }
+tracing = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[build-dependencies]
+proa_fonts_build = { version = "0.1.0" }
+
+[dev-dependencies]
+http-body-util = { version = "0.1" }
+tower = { version = "0.5", features = ["util"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
